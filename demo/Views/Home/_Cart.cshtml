@@ -1,0 +1,41 @@
+﻿@{ 
+    demo.Models.CartData cart = (demo.Models.CartData)ViewBag.cart ;
+}
+<!-- cart box -->
+<div class="aa-cartbox">
+    <a class="aa-cart-link" href="#">
+        <span class="fa fa-shopping-basket"></span>
+        <span class="aa-cart-title">SHOPPING CART</span>
+        <span class="aa-cart-notify">@if (ViewBag.cart!=null) { @ViewBag.cart.amounts}</span>
+    </a>
+    <div class="aa-cartbox-summary">
+        <ul>
+            @if (cart.arrCart.Count != 0)
+            {
+                for (int i=0;i< cart.arrCart.Count;i++)
+                {
+                    demo.Models.Cart c = (demo.Models.Cart)cart.arrCart[i];
+                    <li>
+                        <a class="aa-cartbox-img" href="@Url.Action("ProductDetail","Home",new { id = c.item.id})"><img src="~/Content/dailyShop/img/product/@c.item.img" alt="img @c.item.meta_name" width="100px" height="100px"></a>
+                        <div class="aa-cartbox-info">
+                            <h4><a href="#">@c.item.name</a></h4>
+                            @if (c.item.discount > 0)
+                            {
+                                <p>@c.amounts x @String.Format("{0:0,0}", c.item.discount) đ</p>
+                            }
+                            else
+                            {
+                                <p>@c.amounts x @String.Format("{0:0,0}", c.item.price) đ</p>
+                            }
+                        </div>
+                        <a class="aa-remove-product" href="@Url.Action("removeItem","Home",new {id = c.item.id })"><span class="fa fa-times"></span></a>
+                    </li>
+                }
+            }
+
+        </ul>
+        <span>Total: @String.Format("{0:0,0}", cart.cost) đ</span><br />
+        <a class="aa-cartbox-checkout aa-primary-btn" href="@Url.Action("Cart","Home")">Cart</a>
+    </div>
+</div>
+<!-- / cart box -->

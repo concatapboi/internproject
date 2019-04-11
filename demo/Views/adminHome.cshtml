@@ -1,0 +1,85 @@
+﻿
+@{
+    ViewBag.Title = "adminHome";
+    Layout = "~/Views/Shared/Admin.cshtml";
+    List<demo.Models.tbl_Customer> cus = (List<demo.Models.tbl_Customer>)ViewBag.cus;
+    List<demo.Models.tbl_Bill> bill = (List<demo.Models.tbl_Bill>)ViewBag.bill;
+    List<demo.Models.tbl_Product> p = (List<demo.Models.tbl_Product>)ViewBag.p;
+    int s = 0;
+    for(int i = 0; i < bill.Count; i++)
+    {
+        s += bill[i].total_price;
+    }
+}
+
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-md-12">
+                    
+                </div>
+            </div>
+            <div class="row m-t-25">
+                <div class="col-sm-6 col-lg-3">
+                    <div class="overview-item overview-item--c1">
+                        <div class="overview__inner">
+                            <div class="overview-box clearfix">
+                                <div class="icon">
+                                    <i class="zmdi zmdi-account-o"></i>
+                                </div>
+                                <div class="text">
+                                    <h2>@String.Format("{0:0,0}", cus.Count)</h2>
+                                    <span>CUSTOMER</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-6 col-lg-3">
+                    <div class="overview-item overview-item--c2">
+                        <div class="overview__inner">
+                            <div class="overview-box clearfix">
+                                <div class="icon">
+                                    <i class="zmdi zmdi-shopping-cart"></i>
+                                </div>
+                                <div class="text">
+                                    <h2>@String.Format("{0:0,0}", bill.Count)</h2>
+                                    <span>BILL</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-6 col-lg-3">
+                    <div class="overview-item overview-item--c3">
+                        <div class="overview__inner">
+                            <div class="overview-box clearfix">
+                                <div class="icon">
+                                    <i class="zmdi zmdi-calendar-note"></i>
+                                </div>
+                                <div class="text">
+                                    <h2>@String.Format("{0:0,0}", p.Count)</h2>
+                                    <span>sold items</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-6 col-lg-3">
+                    <div class="overview-item overview-item--c4">
+                        <div class="overview__inner">
+                            <div class="overview-box clearfix">
+                                <div class="icon">
+                                    <i class="zmdi zmdi-money"></i>
+                                </div>
+                                <div class="text">
+                                    <h2>@String.Format("{0:0,0}", s) đ </h2>
+                                    <span>total earnings</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+

@@ -1,0 +1,21 @@
+﻿
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Admin</title>
+    <link rel="stylesheet" type="text/css" href="~/Content/adminstyles.css">
+</head>
+<body>
+    <form class="box" action="@Url.Action("postLogin","Admin")" method="post" enctype="multipart/form-data">
+        <h1>Admin Login</h1>
+        <input type="text" name="username" placeholder="Username" value="hien1997">
+        <input type="password" name="pass" placeholder="Password" value="hien123456789">
+        <input type="submit" name="submit" value="LOGIN">
+    </form>
+</body>
+</html>

@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="7f0732d7e2624bf3b4ef5774dba72383" Name="Diagram1">
+        <EntityTypeShape EntityType="demoModel.tbl_Admin" Width="1.5" PointX="7.75" PointY="6.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="demoModel.tbl_Bill" Width="1.5" PointX="5.25" PointY="7.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="demoModel.tbl_BillDetail" Width="1.5" PointX="7.5" PointY="2.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="demoModel.tbl_Cart" Width="1.5" PointX="10.5" PointY="2.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="demoModel.tbl_Category" Width="1.5" PointX="3" PointY="2.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="demoModel.tbl_Customer" Width="1.5" PointX="3" PointY="7.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="demoModel.tbl_Product" Width="1.5" PointX="5.25" PointY="2.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="demoModel.tbl_Publisher" Width="1.5" PointX="0.75" PointY="2.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="demoModel.tbl_Slider" Width="1.5" PointX="9.75" PointY="6.75" IsExpanded="true" />
+        <AssociationConnector Association="demoModel.fk_bill_detail" ManuallyRouted="false" />
+        <AssociationConnector Association="demoModel.fk_customer_bill" ManuallyRouted="false" />
+        <AssociationConnector Association="demoModel.fk_product_detail" ManuallyRouted="false" />
+        <AssociationConnector Association="demoModel.fk_customer_cart" ManuallyRouted="false" />
+        <AssociationConnector Association="demoModel.fk_product_cart" ManuallyRouted="false" />
+        <AssociationConnector Association="demoModel.fk_cate_pro" ManuallyRouted="false" />
+        <AssociationConnector Association="demoModel.fk_pub_cate" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

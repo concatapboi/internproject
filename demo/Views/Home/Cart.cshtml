@@ -1,0 +1,97 @@
+﻿@{
+    ViewBag.Title = "Cart";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    demo.Models.CartData cart = ViewBag.cart;
+}
+
+@section Title {
+    <title>@ViewBag.Title</title>
+}
+
+<!-- catg header banner section -->
+<section id="aa-catg-head-banner">
+    <img src="~/Content/dailyShop/img/fashion/fashion-header-bg-8.jpg" alt="fashion img">
+    <div class="aa-catg-head-banner-area">
+        <div class="container">
+            <div class="aa-catg-head-banner-content">
+                <h2>Cart Page</h2>
+                <ol class="breadcrumb">
+                    <li>@Html.ActionLink("Home", "Index","Home")</li>
+                    <li class="active">Cart</li>
+                </ol>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- / catg header banner section -->
+<!-- Cart view section -->
+<section id="cart-view">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="cart-view-area">
+                    <div class="cart-view-table">
+                        <form action="">
+                            <div class="table-responsive">
+                                <table class="table">
+                                    <thead>
+                                        <tr>
+                                            <th></th>
+                                            <th></th>
+                                            <th>Product</th>
+                                            <th>Price</th>
+                                            <th>Quantity</th>
+                                            <th>Total</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        @if (cart != null)
+                                        {
+                                            for (int i = 0; i < cart.arrCart.Count; i++)
+                                            {
+                                                demo.Models.Cart c = (demo.Models.Cart)cart.arrCart[i];
+                                                <tr>
+                                                    <td><a class="remove" href="@Url.Action("removeItem","Home",new {id = c.item.id })"><fa class="fa fa-close"></fa></a></td>
+                                                    <td><img src="~/Content/dailyShop/img/product/@c.item.img" alt="img @c.item.meta_name"></td>
+                                                    <td><a class="aa-cart-title" href="#">@c.item.name</a></td>
+                                                    @if (c.item.discount > 0)
+                                                    {<td>@String.Format("{0:0,0}", c.item.discount) đ</td>}else { <td>@String.Format("{0:0,0}", c.item.price) đ</td>}
+                                                    <td><span>@c.amounts</span></td>
+                                                    <td>@String.Format("{0:0,0}", c.cost) đ</td>
+                                                </tr>
+                                            }
+                                        }
+                                    </tbody>
+                                </table>
+                            </div>
+                        </form>
+                        <!-- Cart Total view -->
+                        <div class="cart-view-total">
+                            <h4>Cart Totals</h4>
+                            <table class="aa-totals-table">
+                                <tbody>
+                                    @if (cart != null)
+                                    {
+                                        <tr>
+                                            <th>Total</th>
+                                            <td>@String.Format("{0:0,0}", cart.cost) đ</td>
+                                        </tr>
+                                    }
+                                    else
+                                    {
+                                        <tr>
+                                            <th>Total</th>
+                                            <td>0 đ</td>
+                                        </tr>
+                                    }
+                                </tbody>
+                            </table>
+                            <a href="@Url.Action("Checkout","Home")" class="aa-cart-view-btn">Proced to Checkout</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- / Cart view section -->

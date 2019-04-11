@@ -1,0 +1,787 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.0\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props" Condition="Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.0\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" />
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>
+    </ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{0E2CD0C5-8A0B-4B02-A4D7-F1AA8856B2F2}</ProjectGuid>
+    <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>demo</RootNamespace>
+    <AssemblyName>demo</AssemblyName>
+    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
+    <MvcBuildViews>false</MvcBuildViews>
+    <UseIISExpress>true</UseIISExpress>
+    <Use64BitIISExpress />
+    <IISExpressSSLPort />
+    <IISExpressAnonymousAuthentication />
+    <IISExpressWindowsAuthentication />
+    <IISExpressUseClassicPipelineMode />
+    <UseGlobalApplicationHostFile />
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Data.Entity" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
+    <Reference Include="System.Web.DynamicData" />
+    <Reference Include="System.Web.Entity" />
+    <Reference Include="System.Web.ApplicationServices" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Web.Abstractions" />
+    <Reference Include="System.Web.Routing" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.EnterpriseServices" />
+    <Reference Include="Microsoft.Web.Infrastructure, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.Web.Infrastructure.1.0.0.0\lib\net40\Microsoft.Web.Infrastructure.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Net.Http">
+    </Reference>
+    <Reference Include="System.Net.Http.WebRequest">
+    </Reference>
+    <Reference Include="System.Web.Helpers, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.4\lib\net45\System.Web.Helpers.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Mvc, Version=5.2.4.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.Mvc.5.2.4\lib\net45\System.Web.Mvc.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Optimization">
+      <HintPath>..\packages\Microsoft.AspNet.Web.Optimization.1.1.3\lib\net40\System.Web.Optimization.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Razor, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.Razor.3.2.4\lib\net45\System.Web.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.4\lib\net45\System.Web.WebPages.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Deployment, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.4\lib\net45\System.Web.WebPages.Deployment.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Razor, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.4\lib\net45\System.Web.WebPages.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json">
+      <HintPath>..\packages\Newtonsoft.Json.11.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="WebGrease">
+      <Private>True</Private>
+      <HintPath>..\packages\WebGrease.1.6.0\lib\WebGrease.dll</HintPath>
+    </Reference>
+    <Reference Include="Antlr3.Runtime">
+      <Private>True</Private>
+      <HintPath>..\packages\Antlr.3.5.0.2\lib\Antlr3.Runtime.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="System.Diagnostics.DiagnosticSource">
+      <HintPath>..\packages\System.Diagnostics.DiagnosticSource.4.4.1\lib\net46\System.Diagnostics.DiagnosticSource.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AspNet.TelemetryCorrelation">
+      <HintPath>..\packages\Microsoft.AspNet.TelemetryCorrelation.1.0.0\lib\net45\Microsoft.AspNet.TelemetryCorrelation.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.CodeDom.Providers.DotNetCompilerPlatform">
+      <HintPath>..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.0\lib\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="App_Start\BundleConfig.cs" />
+    <Compile Include="App_Start\FilterConfig.cs" />
+    <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Controllers\AdminController.cs" />
+    <Compile Include="Controllers\BillController.cs" />
+    <Compile Include="Controllers\BillDetailController.cs" />
+    <Compile Include="Controllers\CartController.cs" />
+    <Compile Include="Controllers\CategoryController.cs" />
+    <Compile Include="Controllers\CustomerController.cs" />
+    <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\ProductController.cs" />
+    <Compile Include="Controllers\PublisherController.cs" />
+    <Compile Include="Controllers\SliderController.cs" />
+    <Compile Include="Global.asax.cs">
+      <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Cart.cs" />
+    <Compile Include="Models\CartData.cs" />
+    <Compile Include="Models\Model.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Model.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Model.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Model.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Model.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="Models\tbl_Admin.cs">
+      <DependentUpon>Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\tbl_Bill.cs">
+      <DependentUpon>Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\tbl_BillDetail.cs">
+      <DependentUpon>Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\tbl_Cart.cs">
+      <DependentUpon>Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\tbl_Category.cs">
+      <DependentUpon>Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\tbl_Customer.cs">
+      <DependentUpon>Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\tbl_Product.cs">
+      <DependentUpon>Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\tbl_Publisher.cs">
+      <DependentUpon>Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\tbl_Slider.cs">
+      <DependentUpon>Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Content\adminstyles.css" />
+    <Content Include="Content\CoolAdmin-master\css\font-face.css" />
+    <Content Include="Content\CoolAdmin-master\css\theme.css" />
+    <Content Include="Content\CoolAdmin-master\fonts\poppins\poppins-v5-latin-100.svg" />
+    <Content Include="Content\CoolAdmin-master\fonts\poppins\poppins-v5-latin-100italic.svg" />
+    <Content Include="Content\CoolAdmin-master\fonts\poppins\poppins-v5-latin-200.svg" />
+    <Content Include="Content\CoolAdmin-master\fonts\poppins\poppins-v5-latin-200italic.svg" />
+    <Content Include="Content\CoolAdmin-master\fonts\poppins\poppins-v5-latin-300.svg" />
+    <Content Include="Content\CoolAdmin-master\fonts\poppins\poppins-v5-latin-300italic.svg" />
+    <Content Include="Content\CoolAdmin-master\fonts\poppins\poppins-v5-latin-500.svg" />
+    <Content Include="Content\CoolAdmin-master\fonts\poppins\poppins-v5-latin-500italic.svg" />
+    <Content Include="Content\CoolAdmin-master\fonts\poppins\poppins-v5-latin-600.svg" />
+    <Content Include="Content\CoolAdmin-master\fonts\poppins\poppins-v5-latin-600italic.svg" />
+    <Content Include="Content\CoolAdmin-master\fonts\poppins\poppins-v5-latin-700.svg" />
+    <Content Include="Content\CoolAdmin-master\fonts\poppins\poppins-v5-latin-700italic.svg" />
+    <Content Include="Content\CoolAdmin-master\fonts\poppins\poppins-v5-latin-800.svg" />
+    <Content Include="Content\CoolAdmin-master\fonts\poppins\poppins-v5-latin-800italic.svg" />
+    <Content Include="Content\CoolAdmin-master\fonts\poppins\poppins-v5-latin-900.svg" />
+    <Content Include="Content\CoolAdmin-master\fonts\poppins\poppins-v5-latin-900italic.svg" />
+    <Content Include="Content\CoolAdmin-master\fonts\poppins\poppins-v5-latin-italic.svg" />
+    <Content Include="Content\CoolAdmin-master\fonts\poppins\poppins-v5-latin-regular.svg" />
+    <Content Include="Content\CoolAdmin-master\images\icon\avatar-01.jpg" />
+    <Content Include="Content\CoolAdmin-master\images\icon\logo.png" />
+    <Content Include="Content\CoolAdmin-master\js\main.js" />
+    <Content Include="Content\CoolAdmin-master\vendor\animsition\animsition.min.css" />
+    <Content Include="Content\CoolAdmin-master\vendor\animsition\animsition.min.js" />
+    <Content Include="Content\CoolAdmin-master\vendor\bootstrap-4.1\bootstrap.min.css" />
+    <Content Include="Content\CoolAdmin-master\vendor\bootstrap-4.1\bootstrap.min.js" />
+    <Content Include="Content\CoolAdmin-master\vendor\bootstrap-4.1\popper.min.js" />
+    <Content Include="Content\CoolAdmin-master\vendor\bootstrap-progressbar\bootstrap-progressbar-3.3.4.min.css" />
+    <Content Include="Content\CoolAdmin-master\vendor\bootstrap-progressbar\bootstrap-progressbar.min.js" />
+    <Content Include="Content\CoolAdmin-master\vendor\chartjs\Chart.bundle.min.js" />
+    <Content Include="Content\CoolAdmin-master\vendor\circle-progress\circle-progress.js" />
+    <Content Include="Content\CoolAdmin-master\vendor\circle-progress\circle-progress.min.js" />
+    <Content Include="Content\CoolAdmin-master\vendor\countdown\countdowntime.js" />
+    <Content Include="Content\CoolAdmin-master\vendor\countdown\jquery.countdown.min.js" />
+    <Content Include="Content\CoolAdmin-master\vendor\countdown\moment-timezone-with-data.min.js" />
+    <Content Include="Content\CoolAdmin-master\vendor\countdown\moment-timezone.min.js" />
+    <Content Include="Content\CoolAdmin-master\vendor\countdown\moment.min.js" />
+    <Content Include="Content\CoolAdmin-master\vendor\counter-up\jquery.counterup.min.js" />
+    <Content Include="Content\CoolAdmin-master\vendor\counter-up\jquery.waypoints.min.js" />
+    <Content Include="Content\CoolAdmin-master\vendor\counter-up\waypoints.min.js" />
+    <Content Include="Content\CoolAdmin-master\vendor\css-hamburgers\hamburgers.css" />
+    <Content Include="Content\CoolAdmin-master\vendor\css-hamburgers\hamburgers.min.css" />
+    <Content Include="Content\CoolAdmin-master\vendor\font-awesome-4.7\css\font-awesome.css" />
+    <Content Include="Content\CoolAdmin-master\vendor\font-awesome-4.7\css\font-awesome.min.css" />
+    <Content Include="Content\CoolAdmin-master\vendor\font-awesome-4.7\fonts\fontawesome-webfont.svg" />
+    <Content Include="Content\CoolAdmin-master\vendor\font-awesome-4.7\HELP-US-OUT.txt" />
+    <Content Include="Content\CoolAdmin-master\vendor\font-awesome-5\css\fontawesome-all.min.css" />
+    <Content Include="Content\CoolAdmin-master\vendor\font-awesome-5\webfonts\fa-brands-400.svg" />
+    <Content Include="Content\CoolAdmin-master\vendor\font-awesome-5\webfonts\fa-regular-400.svg" />
+    <Content Include="Content\CoolAdmin-master\vendor\font-awesome-5\webfonts\fa-solid-900.svg" />
+    <Content Include="Content\CoolAdmin-master\vendor\jquery-3.2.1.min.js" />
+    <Content Include="Content\CoolAdmin-master\vendor\jquery-ui.min.js" />
+    <Content Include="Content\CoolAdmin-master\vendor\lightbox2\dist\css\lightbox.css" />
+    <Content Include="Content\CoolAdmin-master\vendor\lightbox2\dist\images\close.png" />
+    <Content Include="Content\CoolAdmin-master\vendor\lightbox2\dist\images\loading.gif" />
+    <Content Include="Content\CoolAdmin-master\vendor\lightbox2\dist\images\next.png" />
+    <Content Include="Content\CoolAdmin-master\vendor\lightbox2\dist\images\prev.png" />
+    <Content Include="Content\CoolAdmin-master\vendor\lightbox2\dist\js\lightbox-plus-jquery.js" />
+    <Content Include="Content\CoolAdmin-master\vendor\lightbox2\dist\js\lightbox-plus-jquery.min.js" />
+    <Content Include="Content\CoolAdmin-master\vendor\lightbox2\dist\js\lightbox.js" />
+    <Content Include="Content\CoolAdmin-master\vendor\lightbox2\dist\js\lightbox.min.js" />
+    <Content Include="Content\CoolAdmin-master\vendor\lightbox2\src\css\lightbox.css" />
+    <Content Include="Content\CoolAdmin-master\vendor\lightbox2\src\images\close.png" />
+    <Content Include="Content\CoolAdmin-master\vendor\lightbox2\src\images\loading.gif" />
+    <Content Include="Content\CoolAdmin-master\vendor\lightbox2\src\images\next.png" />
+    <Content Include="Content\CoolAdmin-master\vendor\lightbox2\src\images\prev.png" />
+    <Content Include="Content\CoolAdmin-master\vendor\lightbox2\src\js\lightbox.js" />
+    <Content Include="Content\CoolAdmin-master\vendor\mdi-font\css\material-design-iconic-font.css" />
+    <Content Include="Content\CoolAdmin-master\vendor\mdi-font\css\material-design-iconic-font.min.css" />
+    <Content Include="Content\CoolAdmin-master\vendor\mdi-font\fonts\Material-Design-Iconic-Font.svg" />
+    <Content Include="Content\CoolAdmin-master\vendor\perfect-scrollbar\perfect-scrollbar.css" />
+    <Content Include="Content\CoolAdmin-master\vendor\perfect-scrollbar\perfect-scrollbar.js" />
+    <Content Include="Content\CoolAdmin-master\vendor\perfect-scrollbar\perfect-scrollbar.min.js" />
+    <Content Include="Content\CoolAdmin-master\vendor\progressbar\progressbar.js" />
+    <Content Include="Content\CoolAdmin-master\vendor\progressbar\progressbar.min.js" />
+    <Content Include="Content\CoolAdmin-master\vendor\select2\select2.min.css" />
+    <Content Include="Content\CoolAdmin-master\vendor\select2\select2.min.js" />
+    <Content Include="Content\CoolAdmin-master\vendor\slick\ajax-loader.gif" />
+    <Content Include="Content\CoolAdmin-master\vendor\slick\fonts\slick.svg" />
+    <Content Include="Content\CoolAdmin-master\vendor\slick\slick-theme.css" />
+    <Content Include="Content\CoolAdmin-master\vendor\slick\slick.css" />
+    <Content Include="Content\CoolAdmin-master\vendor\slick\slick.js" />
+    <Content Include="Content\CoolAdmin-master\vendor\slick\slick.min.js" />
+    <Content Include="Content\CoolAdmin-master\vendor\smk-accordion\accordion.css" />
+    <Content Include="Content\CoolAdmin-master\vendor\smk-accordion\accordion.js" />
+    <Content Include="Content\CoolAdmin-master\vendor\smk-accordion\accordion.min.js" />
+    <Content Include="Content\CoolAdmin-master\vendor\sweetalert\sweetalert.min.js" />
+    <Content Include="Content\CoolAdmin-master\vendor\vector-map\jquery.vmap.brazil.js" />
+    <Content Include="Content\CoolAdmin-master\vendor\vector-map\jquery.vmap.europe.js" />
+    <Content Include="Content\CoolAdmin-master\vendor\vector-map\jquery.vmap.france.js" />
+    <Content Include="Content\CoolAdmin-master\vendor\vector-map\jquery.vmap.germany.js" />
+    <Content Include="Content\CoolAdmin-master\vendor\vector-map\jquery.vmap.js" />
+    <Content Include="Content\CoolAdmin-master\vendor\vector-map\jquery.vmap.min.js" />
+    <Content Include="Content\CoolAdmin-master\vendor\vector-map\jquery.vmap.russia.js" />
+    <Content Include="Content\CoolAdmin-master\vendor\vector-map\jquery.vmap.sampledata.js" />
+    <Content Include="Content\CoolAdmin-master\vendor\vector-map\jquery.vmap.usa.js" />
+    <Content Include="Content\CoolAdmin-master\vendor\vector-map\jquery.vmap.world.js" />
+    <Content Include="Content\CoolAdmin-master\vendor\vector-map\jqvmap.min.css" />
+    <Content Include="Content\CoolAdmin-master\vendor\wow\animate.css" />
+    <Content Include="Content\CoolAdmin-master\vendor\wow\wow.min.js" />
+    <Content Include="Content\dailyShop\css\bootstrap.css" />
+    <Content Include="Content\dailyShop\css\font-awesome.css" />
+    <Content Include="Content\dailyShop\css\jquery.simpleLens.css" />
+    <Content Include="Content\dailyShop\css\jquery.smartmenus.bootstrap.css" />
+    <Content Include="Content\dailyShop\css\nouislider.css" />
+    <Content Include="Content\dailyShop\css\sequence-theme.modern-slide-in.css" />
+    <Content Include="Content\dailyShop\css\slick.css" />
+    <Content Include="Content\dailyShop\css\style.css" />
+    <Content Include="Content\dailyShop\css\theme-color\bridge-theme.css" />
+    <Content Include="Content\dailyShop\css\theme-color\dark-red-theme.css" />
+    <Content Include="Content\dailyShop\css\theme-color\default-theme.css" />
+    <Content Include="Content\dailyShop\css\theme-color\green-theme.css" />
+    <Content Include="Content\dailyShop\css\theme-color\lite-blue-theme.css" />
+    <Content Include="Content\dailyShop\css\theme-color\orange-theme.css" />
+    <Content Include="Content\dailyShop\css\theme-color\pink-theme.css" />
+    <Content Include="Content\dailyShop\css\theme-color\purple-theme.css" />
+    <Content Include="Content\dailyShop\css\theme-color\red-theme.css" />
+    <Content Include="Content\dailyShop\css\theme-color\yellow-theme.css" />
+    <Content Include="Content\dailyShop\fonts\fontawesome-webfont.svg" />
+    <Content Include="Content\dailyShop\fonts\glyphicons-halflings-regular.svg" />
+    <Content Include="Content\dailyShop\img\blue-320x220.jpg" />
+    <Content Include="Content\dailyShop\img\client-brand-css3.png" />
+    <Content Include="Content\dailyShop\img\client-brand-html5.png" />
+    <Content Include="Content\dailyShop\img\close-icon.png" />
+    <Content Include="Content\dailyShop\img\electronics\electronic-1.png" />
+    <Content Include="Content\dailyShop\img\electronics\electronic-2.png" />
+    <Content Include="Content\dailyShop\img\electronics\electronic-3.png" />
+    <Content Include="Content\dailyShop\img\electronics\electronic-4.png" />
+    <Content Include="Content\dailyShop\img\electronics\electronic-5.png" />
+    <Content Include="Content\dailyShop\img\electronics\electronic-6.png" />
+    <Content Include="Content\dailyShop\img\electronics\electronic-7.png" />
+    <Content Include="Content\dailyShop\img\electronics\electronic-8.png" />
+    <Content Include="Content\dailyShop\img\fashion-banner.jpg" />
+    <Content Include="Content\dailyShop\img\fashion\1.jpg" />
+    <Content Include="Content\dailyShop\img\fashion\2.jpg" />
+    <Content Include="Content\dailyShop\img\fashion\3.jpg" />
+    <Content Include="Content\dailyShop\img\fashion\4.jpg" />
+    <Content Include="Content\dailyShop\img\fashion\5.jpg" />
+    <Content Include="Content\dailyShop\img\fashion\fashion-header-bg-8.jpg" />
+    <Content Include="Content\dailyShop\img\flag\english.jpg" />
+    <Content Include="Content\dailyShop\img\flag\french.jpg" />
+    <Content Include="Content\dailyShop\img\green-320x220.jpg" />
+    <Content Include="Content\dailyShop\img\grey-320x220.jpg" />
+    <Content Include="Content\dailyShop\img\logo.jpg" />
+    <Content Include="Content\dailyShop\img\man-small-1.jpg" />
+    <Content Include="Content\dailyShop\img\man\polo-shirt-1.png" />
+    <Content Include="Content\dailyShop\img\man\polo-shirt-2.png" />
+    <Content Include="Content\dailyShop\img\man\polo-shirt-3.png" />
+    <Content Include="Content\dailyShop\img\man\polo-shirt-4.png" />
+    <Content Include="Content\dailyShop\img\man\polo-shirt-5.png" />
+    <Content Include="Content\dailyShop\img\man\polo-shirt-6.png" />
+    <Content Include="Content\dailyShop\img\man\t-shirt-1.png" />
+    <Content Include="Content\dailyShop\img\orange-320x220.jpg" />
+    <Content Include="Content\dailyShop\img\paypal.jpg" />
+    <Content Include="Content\dailyShop\img\product\huawei-honor-7a-owl-510x510.png" />
+    <Content Include="Content\dailyShop\img\product\huawei-honor-8-abstract-510x510.png" />
+    <Content Include="Content\dailyShop\img\product\huawei-honor-8-feathers-510x510.png" />
+    <Content Include="Content\dailyShop\img\product\huawei-honor-8-flowers-510x510.png" />
+    <Content Include="Content\dailyShop\img\product\huawei-honor-8-tiles-510x510.png" />
+    <Content Include="Content\dailyShop\img\product\huawei-honor-p20-pro-coulor-510x510.png" />
+    <Content Include="Content\dailyShop\img\product\huawei-honor-p20-pro-deer-510x510.png" />
+    <Content Include="Content\dailyShop\img\product\huawei-honor-p20-pro-digital-510x510.png" />
+    <Content Include="Content\dailyShop\img\product\huawei-honor-p20-pro-flowers-510x510.png" />
+    <Content Include="Content\dailyShop\img\product\iphone-5-lion-art-510x510.png" />
+    <Content Include="Content\dailyShop\img\product\iphone-6-black-dots-510x510.png" />
+    <Content Include="Content\dailyShop\img\product\iphone-6-cookies-510x510.png" />
+    <Content Include="Content\dailyShop\img\product\iphone-6-skull-art-510x510.png" />
+    <Content Include="Content\dailyShop\img\product\iphone-7-plus-abstract-art-510x510.png" />
+    <Content Include="Content\dailyShop\img\product\iphone-7-plus-abstract-triangles-510x510.png" />
+    <Content Include="Content\dailyShop\img\product\iphone-7-plus-blossom-510x510.png" />
+    <Content Include="Content\dailyShop\img\product\iphone-7-plus-chris-510x510.png" />
+    <Content Include="Content\dailyShop\img\product\iphone-7-plus-coulor-polygon-510x510.png" />
+    <Content Include="Content\dailyShop\img\product\iphone-7-plus-floral-510x510.png" />
+    <Content Include="Content\dailyShop\img\product\iphone-7-plus-leaves-510x510.png" />
+    <Content Include="Content\dailyShop\img\product\iphone-7-plus-mandala-lines-510x510.png" />
+    <Content Include="Content\dailyShop\img\product\iphone-8-dj-510x510.png" />
+    <Content Include="Content\dailyShop\img\product\iphone-8-lion-face-510x510.png" />
+    <Content Include="Content\dailyShop\img\product\iphone-8-love-510x510.png" />
+    <Content Include="Content\dailyShop\img\product\iphone-8-vintage-bus-510x510.png" />
+    <Content Include="Content\dailyShop\img\product\iphone-x-adidas-510x510.png" />
+    <Content Include="Content\dailyShop\img\product\iphone-x-mornach-platinum-510x510.png" />
+    <Content Include="Content\dailyShop\img\product\iphone-x-plyo-pink-510x510.png" />
+    <Content Include="Content\dailyShop\img\product\iphone-x-trooper-510x510.png" />
+    <Content Include="Content\dailyShop\img\product\oppo-f3-lite-ctrl-esc-510x510.png" />
+    <Content Include="Content\dailyShop\img\product\oppo-f3-lite-deer-510x510.png" />
+    <Content Include="Content\dailyShop\img\product\oppo-f3-lite-hallo-510x510.png" />
+    <Content Include="Content\dailyShop\img\product\oppo-f3-lite-planet-510x510.png" />
+    <Content Include="Content\dailyShop\img\product\oppo-f3-lite-wolf-510x510.png" />
+    <Content Include="Content\dailyShop\img\product\samsung-gal-a7-digital-abstract-510x510.png" />
+    <Content Include="Content\dailyShop\img\product\samsung-gal-a7-floral-510x510.png" />
+    <Content Include="Content\dailyShop\img\product\samsung-gal-a7-vibrant-510x510.png" />
+    <Content Include="Content\dailyShop\img\product\samsung-gal-a7-vintage-floral-510x510.png" />
+    <Content Include="Content\dailyShop\img\product\samsung-gal-j7-floral-510x510.png" />
+    <Content Include="Content\dailyShop\img\product\samsung-gal-j7-geometric-hearts-510x510.png" />
+    <Content Include="Content\dailyShop\img\product\samsung-gal-j7-geometric-triangles-510x510.png" />
+    <Content Include="Content\dailyShop\img\product\samsung-gal-note3-digital-art-510x510.png" />
+    <Content Include="Content\dailyShop\img\product\samsung-gal-note3-vespa-510x510.png" />
+    <Content Include="Content\dailyShop\img\product\samsung-gal-note3-vintage-510x510.png" />
+    <Content Include="Content\dailyShop\img\product\samsung-gal-note4-swirls-510x510.png" />
+    <Content Include="Content\dailyShop\img\product\samsung-gal-s6-abstract-510x510.png" />
+    <Content Include="Content\dailyShop\img\product\samsung-gal-s6-lion-hard-510x510.png" />
+    <Content Include="Content\dailyShop\img\product\samsung-gal-s7-edge-camouflage-510x510.png" />
+    <Content Include="Content\dailyShop\img\product\samsung-gal-s7-edge-coulor-heart-510x510.png" />
+    <Content Include="Content\dailyShop\img\product\samsung-gal-s7-edge-line-waves-510x510.png" />
+    <Content Include="Content\dailyShop\img\product\samsung-gal-s7-edge-red-heart-510x510.png" />
+    <Content Include="Content\dailyShop\img\product\samsung-gal-s7-flowers-510x510.png" />
+    <Content Include="Content\dailyShop\img\product\samsung-gal-s7-triangles-510x510.png" />
+    <Content Include="Content\dailyShop\img\product\samsung-gal-s7-waves-510x510.png" />
+    <Content Include="Content\dailyShop\img\product\samsung-gal-s7-windows-510x510.png" />
+    <Content Include="Content\dailyShop\img\product\samsung-gal-s8-digital-abstract-510x510.png" />
+    <Content Include="Content\dailyShop\img\product\samsung-gal-s8-plus-blue-flower-510x510.png" />
+    <Content Include="Content\dailyShop\img\product\samsung-gal-s8-plus-gear-hearts-510x510.png" />
+    <Content Include="Content\dailyShop\img\product\samsung-gal-s8-plus-gear-swirls-510x510.png" />
+    <Content Include="Content\dailyShop\img\product\samsung-gal-s8-plus-gear-wood-510x510.png" />
+    <Content Include="Content\dailyShop\img\product\samsung-gal-s8-plus-painted-abstract-510x510.png" />
+    <Content Include="Content\dailyShop\img\product\samsung-gal-s8-plus-pinky-flower-510x510.png" />
+    <Content Include="Content\dailyShop\img\product\xiaomi-mi-max-bear-510x510.png" />
+    <Content Include="Content\dailyShop\img\product\xiaomi-mi-max-coulor-510x510.png" />
+    <Content Include="Content\dailyShop\img\product\xiaomi-mi-max-pinky-lines-510x510.png" />
+    <Content Include="Content\dailyShop\img\product\xiaomi-mi8-blue-camouflage-510x510.png" />
+    <Content Include="Content\dailyShop\img\product\xiaomi-mi8-green-camouflage-510x510.png" />
+    <Content Include="Content\dailyShop\img\product\xiaomi-redmi-note3-aztec-510x510.png" />
+    <Content Include="Content\dailyShop\img\product\xiaomi-redmi-note3-blossom-510x510.png" />
+    <Content Include="Content\dailyShop\img\product\xiaomi-redmi-note3-cheetah-510x510.png" />
+    <Content Include="Content\dailyShop\img\product\xiaomi-redmi-note3-vintage-music-510x510.png" />
+    <Content Include="Content\dailyShop\img\product\xiaomi-redmi-note4-elephants-510x510.png" />
+    <Content Include="Content\dailyShop\img\product\xiaomi-redmi-note4-flowers-510x510.png" />
+    <Content Include="Content\dailyShop\img\product\xiaomi-redmi-note4-triangles-510x510.png" />
+    <Content Include="Content\dailyShop\img\product\xiaomi-redmi-note4-white-dots-510x510.png" />
+    <Content Include="Content\dailyShop\img\product\xiaomi-redmi-note5-flowers-510x510.png" />
+    <Content Include="Content\dailyShop\img\product\xiaomi-redmi-note5-pebbles-510x510.png" />
+    <Content Include="Content\dailyShop\img\product\xiaomi-redmi-note5-pro-chris-510x510.png" />
+    <Content Include="Content\dailyShop\img\product\xiaomi-redmi-note5-pro-green-vintage-floral-510x510.png" />
+    <Content Include="Content\dailyShop\img\product\xiaomi-redmi-note5-pro-painted-abstract-510x510.png" />
+    <Content Include="Content\dailyShop\img\product\xiaomi-redmi-note5-pro-pixel-510x510.png" />
+    <Content Include="Content\dailyShop\img\product\xiaomi-redmi-note5-pro-spring-510x510.png" />
+    <Content Include="Content\dailyShop\img\product\xiaomi-redmi-note5-roses-510x510.png" />
+    <Content Include="Content\dailyShop\img\product\xiaomi-redmi-note5-triangles-510x510.png" />
+    <Content Include="Content\dailyShop\img\product\xiaomi-redmi-note5-vintage-510x510.png" />
+    <Content Include="Content\dailyShop\img\red-450x450.jpg" />
+    <Content Include="Content\dailyShop\img\slider\1.jpg" />
+    <Content Include="Content\dailyShop\img\slider\ajax-loader.gif" />
+    <Content Include="Content\dailyShop\img\slider\bt-next%402x.png" />
+    <Content Include="Content\dailyShop\img\slider\bt-next.png" />
+    <Content Include="Content\dailyShop\img\slider\bt-prev%402x.png" />
+    <Content Include="Content\dailyShop\img\slider\bt-prev.png" />
+    <Content Include="Content\dailyShop\img\slider\slide-1.jpg" />
+    <Content Include="Content\dailyShop\img\slider\slide-2.jpg" />
+    <Content Include="Content\dailyShop\img\slider\slide-3.jpg" />
+    <Content Include="Content\dailyShop\img\slider\slide-4.jpg" />
+    <Content Include="Content\dailyShop\img\sports\sport-1.png" />
+    <Content Include="Content\dailyShop\img\sports\sport-2.png" />
+    <Content Include="Content\dailyShop\img\sports\sport-3.png" />
+    <Content Include="Content\dailyShop\img\sports\sport-4.png" />
+    <Content Include="Content\dailyShop\img\sports\sport-5.png" />
+    <Content Include="Content\dailyShop\img\sports\sport-6.png" />
+    <Content Include="Content\dailyShop\img\sports\sport-7.png" />
+    <Content Include="Content\dailyShop\img\sports\sport-8.png" />
+    <Content Include="Content\dailyShop\img\testimonial-bg-1.jpg" />
+    <Content Include="Content\dailyShop\img\testimonial-img-1.jpg" />
+    <Content Include="Content\dailyShop\img\testimonial-img-2.jpg" />
+    <Content Include="Content\dailyShop\img\testimonial-img-3.jpg" />
+    <Content Include="Content\dailyShop\img\view-slider\large\polo-shirt-1.png" />
+    <Content Include="Content\dailyShop\img\view-slider\large\polo-shirt-2.png" />
+    <Content Include="Content\dailyShop\img\view-slider\large\polo-shirt-3.png" />
+    <Content Include="Content\dailyShop\img\view-slider\large\polo-shirt-4.png" />
+    <Content Include="Content\dailyShop\img\view-slider\loading.gif" />
+    <Content Include="Content\dailyShop\img\view-slider\medium\polo-shirt-1.png" />
+    <Content Include="Content\dailyShop\img\view-slider\medium\polo-shirt-2.png" />
+    <Content Include="Content\dailyShop\img\view-slider\medium\polo-shirt-3.png" />
+    <Content Include="Content\dailyShop\img\view-slider\medium\polo-shirt-4.png" />
+    <Content Include="Content\dailyShop\img\view-slider\thumbnail\polo-shirt-1.png" />
+    <Content Include="Content\dailyShop\img\view-slider\thumbnail\polo-shirt-2.png" />
+    <Content Include="Content\dailyShop\img\view-slider\thumbnail\polo-shirt-3.png" />
+    <Content Include="Content\dailyShop\img\view-slider\thumbnail\polo-shirt-4.png" />
+    <Content Include="Content\dailyShop\img\woman-small-1.jpg" />
+    <Content Include="Content\dailyShop\img\woman-small-2.jpg" />
+    <Content Include="Content\dailyShop\img\women\girl-1.png" />
+    <Content Include="Content\dailyShop\img\women\girl-2.png" />
+    <Content Include="Content\dailyShop\img\women\girl-3.png" />
+    <Content Include="Content\dailyShop\img\women\girl-4.png" />
+    <Content Include="Content\dailyShop\img\women\girl-5.png" />
+    <Content Include="Content\dailyShop\img\women\girl-6.png" />
+    <Content Include="Content\dailyShop\img\women\girl-7.png" />
+    <Content Include="Content\dailyShop\js\bootstrap.js" />
+    <Content Include="Content\dailyShop\js\custom.js" />
+    <Content Include="Content\dailyShop\js\jquery.simpleGallery.js" />
+    <Content Include="Content\dailyShop\js\jquery.simpleLens.js" />
+    <Content Include="Content\dailyShop\js\jquery.smartmenus.bootstrap.js" />
+    <Content Include="Content\dailyShop\js\jquery.smartmenus.js" />
+    <Content Include="Content\dailyShop\js\nouislider.js" />
+    <Content Include="Content\dailyShop\js\sequence-theme.modern-slide-in.js" />
+    <Content Include="Content\dailyShop\js\sequence.js" />
+    <Content Include="Content\dailyShop\js\slick.js" />
+    <Content Include="favicon.ico" />
+    <Content Include="fonts\glyphicons-halflings-regular.svg" />
+    <Content Include="Global.asax" />
+    <Content Include="Models\Model.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>Model.edmx</DependentUpon>
+      <LastGenOutput>Model.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="Models\Model.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>Model.edmx</DependentUpon>
+      <LastGenOutput>Model.cs</LastGenOutput>
+    </Content>
+    <Content Include="Scripts\bootstrap.js" />
+    <Content Include="Scripts\bootstrap.min.js" />
+    <Content Include="Content\dailyShop\.sass-cache\3fcd99d0c8b91f50f06b0715ce73ad297a6fc258\_base.scssc" />
+    <Content Include="Content\dailyShop\.sass-cache\3fcd99d0c8b91f50f06b0715ce73ad297a6fc258\_mixins.scssc" />
+    <Content Include="Content\dailyShop\.sass-cache\3fcd99d0c8b91f50f06b0715ce73ad297a6fc258\_variables.scssc" />
+    <Content Include="Content\dailyShop\.sass-cache\58d96aa2f3ca6831ea65d734678a63e337572170\style.scssc" />
+    <Content Include="Content\dailyShop\.sass-cache\8d96c3a14a0bb8e118b2f4f0ff234b926fa1678e\_buttons.scssc" />
+    <Content Include="Content\dailyShop\.sass-cache\8d96c3a14a0bb8e118b2f4f0ff234b926fa1678e\_responsive.scssc" />
+    <Content Include="Content\dailyShop\.sass-cache\8d96c3a14a0bb8e118b2f4f0ff234b926fa1678e\_sections.scssc" />
+    <Content Include="Content\dailyShop\.sass-cache\8d96c3a14a0bb8e118b2f4f0ff234b926fa1678e\_typography.scssc" />
+    <Content Include="Content\dailyShop\.sass-cache\ef29edb4d21face4cdada241cd6b836dafbe5b2a\_footer.scssc" />
+    <Content Include="Content\dailyShop\.sass-cache\ef29edb4d21face4cdada241cd6b836dafbe5b2a\_header.scssc" />
+    <Content Include="Content\dailyShop\.sass-cache\ef29edb4d21face4cdada241cd6b836dafbe5b2a\_nav.scssc" />
+    <Content Include="Content\dailyShop\fonts\fontawesome-webfont.eot" />
+    <Content Include="Content\dailyShop\fonts\fontawesome-webfont.ttf" />
+    <Content Include="Content\dailyShop\fonts\fontawesome-webfont.woff" />
+    <Content Include="Content\dailyShop\fonts\fontawesome-webfont.woff2" />
+    <Content Include="Content\dailyShop\fonts\FontAwesome.otf" />
+    <Content Include="Content\dailyShop\fonts\glyphicons-halflings-regular.eot" />
+    <Content Include="Content\dailyShop\fonts\glyphicons-halflings-regular.ttf" />
+    <Content Include="Content\dailyShop\fonts\glyphicons-halflings-regular.woff" />
+    <Content Include="Content\dailyShop\fonts\glyphicons-halflings-regular.woff2" />
+    <Content Include="Content\dailyShop\scss\base\_base.scss" />
+    <Content Include="Content\dailyShop\scss\base\_mixins.scss" />
+    <Content Include="Content\dailyShop\scss\base\_variables.scss" />
+    <Content Include="Content\dailyShop\scss\layouts\_footer.scss" />
+    <Content Include="Content\dailyShop\scss\layouts\_header.scss" />
+    <Content Include="Content\dailyShop\scss\layouts\_nav.scss" />
+    <Content Include="Content\dailyShop\scss\modules\_buttons.scss" />
+    <Content Include="Content\dailyShop\scss\modules\_responsive.scss" />
+    <Content Include="Content\dailyShop\scss\modules\_sections.scss" />
+    <Content Include="Content\dailyShop\scss\modules\_typography.scss" />
+    <Content Include="Content\dailyShop\scss\style.scss" />
+    <Content Include="Content\CoolAdmin-master\fonts\poppins\poppins-v5-latin-100.eot" />
+    <Content Include="Content\CoolAdmin-master\fonts\poppins\poppins-v5-latin-100.ttf" />
+    <Content Include="Content\CoolAdmin-master\fonts\poppins\poppins-v5-latin-100.woff" />
+    <Content Include="Content\CoolAdmin-master\fonts\poppins\poppins-v5-latin-100.woff2" />
+    <Content Include="Content\CoolAdmin-master\fonts\poppins\poppins-v5-latin-100italic.eot" />
+    <Content Include="Content\CoolAdmin-master\fonts\poppins\poppins-v5-latin-100italic.ttf" />
+    <Content Include="Content\CoolAdmin-master\fonts\poppins\poppins-v5-latin-100italic.woff" />
+    <Content Include="Content\CoolAdmin-master\fonts\poppins\poppins-v5-latin-100italic.woff2" />
+    <Content Include="Content\CoolAdmin-master\fonts\poppins\poppins-v5-latin-200.eot" />
+    <Content Include="Content\CoolAdmin-master\fonts\poppins\poppins-v5-latin-200.ttf" />
+    <Content Include="Content\CoolAdmin-master\fonts\poppins\poppins-v5-latin-200.woff" />
+    <Content Include="Content\CoolAdmin-master\fonts\poppins\poppins-v5-latin-200.woff2" />
+    <Content Include="Content\CoolAdmin-master\fonts\poppins\poppins-v5-latin-200italic.eot" />
+    <Content Include="Content\CoolAdmin-master\fonts\poppins\poppins-v5-latin-200italic.ttf" />
+    <Content Include="Content\CoolAdmin-master\fonts\poppins\poppins-v5-latin-200italic.woff" />
+    <Content Include="Content\CoolAdmin-master\fonts\poppins\poppins-v5-latin-200italic.woff2" />
+    <Content Include="Content\CoolAdmin-master\fonts\poppins\poppins-v5-latin-300.eot" />
+    <Content Include="Content\CoolAdmin-master\fonts\poppins\poppins-v5-latin-300.ttf" />
+    <Content Include="Content\CoolAdmin-master\fonts\poppins\poppins-v5-latin-300.woff" />
+    <Content Include="Content\CoolAdmin-master\fonts\poppins\poppins-v5-latin-300.woff2" />
+    <Content Include="Content\CoolAdmin-master\fonts\poppins\poppins-v5-latin-300italic.eot" />
+    <Content Include="Content\CoolAdmin-master\fonts\poppins\poppins-v5-latin-300italic.ttf" />
+    <Content Include="Content\CoolAdmin-master\fonts\poppins\poppins-v5-latin-300italic.woff" />
+    <Content Include="Content\CoolAdmin-master\fonts\poppins\poppins-v5-latin-300italic.woff2" />
+    <Content Include="Content\CoolAdmin-master\fonts\poppins\poppins-v5-latin-500.eot" />
+    <Content Include="Content\CoolAdmin-master\fonts\poppins\poppins-v5-latin-500.ttf" />
+    <Content Include="Content\CoolAdmin-master\fonts\poppins\poppins-v5-latin-500.woff" />
+    <Content Include="Content\CoolAdmin-master\fonts\poppins\poppins-v5-latin-500.woff2" />
+    <Content Include="Content\CoolAdmin-master\fonts\poppins\poppins-v5-latin-500italic.eot" />
+    <Content Include="Content\CoolAdmin-master\fonts\poppins\poppins-v5-latin-500italic.ttf" />
+    <Content Include="Content\CoolAdmin-master\fonts\poppins\poppins-v5-latin-500italic.woff" />
+    <Content Include="Content\CoolAdmin-master\fonts\poppins\poppins-v5-latin-500italic.woff2" />
+    <Content Include="Content\CoolAdmin-master\fonts\poppins\poppins-v5-latin-600.eot" />
+    <Content Include="Content\CoolAdmin-master\fonts\poppins\poppins-v5-latin-600.ttf" />
+    <Content Include="Content\CoolAdmin-master\fonts\poppins\poppins-v5-latin-600.woff" />
+    <Content Include="Content\CoolAdmin-master\fonts\poppins\poppins-v5-latin-600.woff2" />
+    <Content Include="Content\CoolAdmin-master\fonts\poppins\poppins-v5-latin-600italic.eot" />
+    <Content Include="Content\CoolAdmin-master\fonts\poppins\poppins-v5-latin-600italic.ttf" />
+    <Content Include="Content\CoolAdmin-master\fonts\poppins\poppins-v5-latin-600italic.woff" />
+    <Content Include="Content\CoolAdmin-master\fonts\poppins\poppins-v5-latin-600italic.woff2" />
+    <Content Include="Content\CoolAdmin-master\fonts\poppins\poppins-v5-latin-700.eot" />
+    <Content Include="Content\CoolAdmin-master\fonts\poppins\poppins-v5-latin-700.ttf" />
+    <Content Include="Content\CoolAdmin-master\fonts\poppins\poppins-v5-latin-700.woff" />
+    <Content Include="Content\CoolAdmin-master\fonts\poppins\poppins-v5-latin-700.woff2" />
+    <Content Include="Content\CoolAdmin-master\fonts\poppins\poppins-v5-latin-700italic.eot" />
+    <Content Include="Content\CoolAdmin-master\fonts\poppins\poppins-v5-latin-700italic.ttf" />
+    <Content Include="Content\CoolAdmin-master\fonts\poppins\poppins-v5-latin-700italic.woff" />
+    <Content Include="Content\CoolAdmin-master\fonts\poppins\poppins-v5-latin-700italic.woff2" />
+    <Content Include="Content\CoolAdmin-master\fonts\poppins\poppins-v5-latin-800.eot" />
+    <Content Include="Content\CoolAdmin-master\fonts\poppins\poppins-v5-latin-800.ttf" />
+    <Content Include="Content\CoolAdmin-master\fonts\poppins\poppins-v5-latin-800.woff" />
+    <Content Include="Content\CoolAdmin-master\fonts\poppins\poppins-v5-latin-800.woff2" />
+    <Content Include="Content\CoolAdmin-master\fonts\poppins\poppins-v5-latin-800italic.eot" />
+    <Content Include="Content\CoolAdmin-master\fonts\poppins\poppins-v5-latin-800italic.ttf" />
+    <Content Include="Content\CoolAdmin-master\fonts\poppins\poppins-v5-latin-800italic.woff" />
+    <Content Include="Content\CoolAdmin-master\fonts\poppins\poppins-v5-latin-800italic.woff2" />
+    <Content Include="Content\CoolAdmin-master\fonts\poppins\poppins-v5-latin-900.eot" />
+    <Content Include="Content\CoolAdmin-master\fonts\poppins\poppins-v5-latin-900.ttf" />
+    <Content Include="Content\CoolAdmin-master\fonts\poppins\poppins-v5-latin-900.woff" />
+    <Content Include="Content\CoolAdmin-master\fonts\poppins\poppins-v5-latin-900.woff2" />
+    <Content Include="Content\CoolAdmin-master\fonts\poppins\poppins-v5-latin-900italic.eot" />
+    <Content Include="Content\CoolAdmin-master\fonts\poppins\poppins-v5-latin-900italic.ttf" />
+    <Content Include="Content\CoolAdmin-master\fonts\poppins\poppins-v5-latin-900italic.woff" />
+    <Content Include="Content\CoolAdmin-master\fonts\poppins\poppins-v5-latin-900italic.woff2" />
+    <Content Include="Content\CoolAdmin-master\fonts\poppins\poppins-v5-latin-italic.eot" />
+    <Content Include="Content\CoolAdmin-master\fonts\poppins\poppins-v5-latin-italic.ttf" />
+    <Content Include="Content\CoolAdmin-master\fonts\poppins\poppins-v5-latin-italic.woff" />
+    <Content Include="Content\CoolAdmin-master\fonts\poppins\poppins-v5-latin-italic.woff2" />
+    <Content Include="Content\CoolAdmin-master\fonts\poppins\poppins-v5-latin-regular.eot" />
+    <Content Include="Content\CoolAdmin-master\fonts\poppins\poppins-v5-latin-regular.ttf" />
+    <Content Include="Content\CoolAdmin-master\fonts\poppins\poppins-v5-latin-regular.woff" />
+    <Content Include="Content\CoolAdmin-master\fonts\poppins\poppins-v5-latin-regular.woff2" />
+    <Content Include="Content\CoolAdmin-master\vendor\font-awesome-4.7\fonts\fontawesome-webfont.eot" />
+    <Content Include="Content\CoolAdmin-master\vendor\font-awesome-4.7\fonts\fontawesome-webfont.ttf" />
+    <Content Include="Content\CoolAdmin-master\vendor\font-awesome-4.7\fonts\fontawesome-webfont.woff" />
+    <Content Include="Content\CoolAdmin-master\vendor\font-awesome-4.7\fonts\fontawesome-webfont.woff2" />
+    <Content Include="Content\CoolAdmin-master\vendor\font-awesome-4.7\fonts\FontAwesome.otf" />
+    <Content Include="Content\CoolAdmin-master\vendor\font-awesome-5\webfonts\fa-brands-400.eot" />
+    <Content Include="Content\CoolAdmin-master\vendor\font-awesome-5\webfonts\fa-brands-400.ttf" />
+    <Content Include="Content\CoolAdmin-master\vendor\font-awesome-5\webfonts\fa-brands-400.woff" />
+    <Content Include="Content\CoolAdmin-master\vendor\font-awesome-5\webfonts\fa-brands-400.woff2" />
+    <Content Include="Content\CoolAdmin-master\vendor\font-awesome-5\webfonts\fa-regular-400.eot" />
+    <Content Include="Content\CoolAdmin-master\vendor\font-awesome-5\webfonts\fa-regular-400.ttf" />
+    <Content Include="Content\CoolAdmin-master\vendor\font-awesome-5\webfonts\fa-regular-400.woff" />
+    <Content Include="Content\CoolAdmin-master\vendor\font-awesome-5\webfonts\fa-regular-400.woff2" />
+    <Content Include="Content\CoolAdmin-master\vendor\font-awesome-5\webfonts\fa-solid-900.eot" />
+    <Content Include="Content\CoolAdmin-master\vendor\font-awesome-5\webfonts\fa-solid-900.ttf" />
+    <Content Include="Content\CoolAdmin-master\vendor\font-awesome-5\webfonts\fa-solid-900.woff" />
+    <Content Include="Content\CoolAdmin-master\vendor\font-awesome-5\webfonts\fa-solid-900.woff2" />
+    <Content Include="Content\CoolAdmin-master\vendor\lightbox2\dist\js\lightbox-plus-jquery.min.map" />
+    <Content Include="Content\CoolAdmin-master\vendor\lightbox2\dist\js\lightbox.min.map" />
+    <Content Include="Content\CoolAdmin-master\vendor\mdi-font\fonts\Material-Design-Iconic-Font.eot" />
+    <Content Include="Content\CoolAdmin-master\vendor\mdi-font\fonts\Material-Design-Iconic-Font.ttf" />
+    <Content Include="Content\CoolAdmin-master\vendor\mdi-font\fonts\Material-Design-Iconic-Font.woff" />
+    <Content Include="Content\CoolAdmin-master\vendor\mdi-font\fonts\Material-Design-Iconic-Font.woff2" />
+    <Content Include="Content\CoolAdmin-master\vendor\slick\config.rb" />
+    <Content Include="Content\CoolAdmin-master\vendor\slick\fonts\slick.eot" />
+    <Content Include="Content\CoolAdmin-master\vendor\slick\fonts\slick.ttf" />
+    <Content Include="Content\CoolAdmin-master\vendor\slick\fonts\slick.woff" />
+    <Content Include="Content\CoolAdmin-master\vendor\slick\slick-theme.less" />
+    <Content Include="Content\CoolAdmin-master\vendor\slick\slick-theme.scss" />
+    <Content Include="Content\CoolAdmin-master\vendor\slick\slick.less" />
+    <Content Include="Content\CoolAdmin-master\vendor\slick\slick.scss" />
+    <EntityDeploy Include="Models\Model.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>Model.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <Content Include="Models\Model.edmx.diagram">
+      <DependentUpon>Model.edmx</DependentUpon>
+    </Content>
+    <None Include="Scripts\jquery-3.3.1.intellisense.js" />
+    <Content Include="Scripts\jquery-3.3.1.js" />
+    <Content Include="Scripts\jquery-3.3.1.min.js" />
+    <Content Include="Scripts\jquery-3.3.1.slim.js" />
+    <Content Include="Scripts\jquery-3.3.1.slim.min.js" />
+    <None Include="Scripts\jquery.validate-vsdoc.js" />
+    <Content Include="Scripts\jquery.validate.js" />
+    <Content Include="Scripts\jquery.validate.min.js" />
+    <Content Include="Scripts\jquery.validate.unobtrusive.js" />
+    <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
+    <Content Include="Scripts\modernizr-2.8.3.js" />
+    <Content Include="Web.config" />
+    <Content Include="Web.Debug.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </Content>
+    <Content Include="Web.Release.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </Content>
+    <Content Include="Views\Web.config" />
+    <Content Include="Views\_ViewStart.cshtml" />
+    <Content Include="Views\Shared\Error.cshtml" />
+    <Content Include="Views\Shared\_Layout.cshtml" />
+    <Content Include="Views\Home\Index.cshtml" />
+    <Content Include="Views\Shared\Admin.cshtml" />
+    <Content Include="Views\Product\Create.cshtml" />
+    <Content Include="Views\Product\Delete.cshtml" />
+    <Content Include="Views\Product\Details.cshtml" />
+    <Content Include="Views\Product\Edit.cshtml" />
+    <Content Include="Views\Product\Index.cshtml" />
+    <Content Include="Views\Category\Create.cshtml" />
+    <Content Include="Views\Category\Delete.cshtml" />
+    <Content Include="Views\Category\Details.cshtml" />
+    <Content Include="Views\Category\Edit.cshtml" />
+    <Content Include="Views\Category\Index.cshtml" />
+    <Content Include="Views\Publisher\Create.cshtml" />
+    <Content Include="Views\Publisher\Delete.cshtml" />
+    <Content Include="Views\Publisher\Details.cshtml" />
+    <Content Include="Views\Publisher\Edit.cshtml" />
+    <Content Include="Views\Publisher\Index.cshtml" />
+    <Content Include="Views\Admin\Create.cshtml" />
+    <Content Include="Views\Admin\Delete.cshtml" />
+    <Content Include="Views\Admin\Details.cshtml" />
+    <Content Include="Views\Admin\Edit.cshtml" />
+    <Content Include="Views\Admin\Index.cshtml" />
+    <Content Include="Views\Home\Product.cshtml" />
+    <Content Include="Views\Home\Account.cshtml" />
+    <Content Include="Views\Home\Checkout.cshtml" />
+    <Content Include="Views\Bill\Create.cshtml" />
+    <Content Include="Views\Bill\Delete.cshtml" />
+    <Content Include="Views\Bill\Details.cshtml" />
+    <Content Include="Views\Bill\Edit.cshtml" />
+    <Content Include="Views\Bill\Index.cshtml" />
+    <Content Include="Views\Home\Cart.cshtml" />
+    <Content Include="Views\Home\Contact.cshtml" />
+    <Content Include="Views\Slider\Create.cshtml" />
+    <Content Include="Views\Slider\Delete.cshtml" />
+    <Content Include="Views\Slider\Details.cshtml" />
+    <Content Include="Views\Slider\Edit.cshtml" />
+    <Content Include="Views\Slider\Index.cshtml" />
+    <Content Include="Views\Cart\Create.cshtml" />
+    <Content Include="Views\Cart\Delete.cshtml" />
+    <Content Include="Views\Cart\Details.cshtml" />
+    <Content Include="Views\Cart\Edit.cshtml" />
+    <Content Include="Views\Cart\Index.cshtml" />
+    <Content Include="Views\Shared\Cart.cshtml" />
+    <Content Include="Views\Home\_Cart.cshtml" />
+    <Content Include="Views\Home\ProductDetail.cshtml" />
+    <Content Include="Views\Err.cshtml" />
+    <Content Include="Views\_Login.cshtml" />
+    <Content Include="Views\adminHome.cshtml" />
+    <Content Include="Views\Customer\Create.cshtml" />
+    <Content Include="Views\Customer\Delete.cshtml" />
+    <Content Include="Views\Customer\Details.cshtml" />
+    <Content Include="Views\Customer\Edit.cshtml" />
+    <Content Include="Views\Customer\Index.cshtml" />
+    <Content Include="Views\BillDetail\Create.cshtml" />
+    <Content Include="Views\BillDetail\Delete.cshtml" />
+    <Content Include="Views\BillDetail\Details.cshtml" />
+    <Content Include="Views\BillDetail\Edit.cshtml" />
+    <Content Include="Views\BillDetail\Index.cshtml" />
+    <Content Include="Views\Home\_BillDetail.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="App_Data\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="fonts\glyphicons-halflings-regular.woff2" />
+    <Content Include="fonts\glyphicons-halflings-regular.woff" />
+    <Content Include="fonts\glyphicons-halflings-regular.ttf" />
+    <Content Include="fonts\glyphicons-halflings-regular.eot" />
+    <None Include="packages.config" />
+    <Content Include="Scripts\jquery-3.3.1.slim.min.map" />
+    <Content Include="Scripts\jquery-3.3.1.min.map" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
+    <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+  </PropertyGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(VSToolsPath)\WebApplications\Microsoft.WebApplication.targets" Condition="'$(VSToolsPath)' != ''" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" Condition="false" />
+  <Target Name="MvcBuildViews" AfterTargets="AfterBuild" Condition="'$(MvcBuildViews)'=='true'">
+    <AspNetCompiler VirtualPath="temp" PhysicalPath="$(WebProjectOutputDir)" />
+  </Target>
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
+        <WebProjectProperties>
+          <UseIIS>True</UseIIS>
+          <AutoAssignPort>True</AutoAssignPort>
+          <DevelopmentServerPort>49860</DevelopmentServerPort>
+          <DevelopmentServerVPath>/</DevelopmentServerVPath>
+          <IISUrl>http://localhost:49860/</IISUrl>
+          <NTLMAuthentication>False</NTLMAuthentication>
+          <UseCustomServer>False</UseCustomServer>
+          <CustomServerUrl>
+          </CustomServerUrl>
+          <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
+        </WebProjectProperties>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.0\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.0\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props'))" />
+  </Target>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it.
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target> -->
+</Project>

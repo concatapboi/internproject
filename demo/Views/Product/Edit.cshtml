@@ -1,0 +1,77 @@
+﻿@model demo.Models.tbl_Product
+
+@{
+    ViewBag.Title = "Edit";
+    Layout = "~/Views/Shared/Admin.cshtml";
+    List<demo.Models.tbl_Category> cate = (List<demo.Models.tbl_Category>)ViewBag.cate;
+    demo.Models.tbl_Product p = (demo.Models.tbl_Product)ViewBag.p;
+}
+
+<h2>Edit</h2>
+
+<form action="@Url.Action("postEdit","Product")" method="post" enctype="multipart/form-data">
+    <table class="table">
+        <tr><td colspan="2"><input type="text" value="@p.id" name="id"  hidden/></td></tr>
+        <tr>
+            <td><label>Category ID:</label></td>
+            <td>
+                <select name="cate_id">
+                    @for (int i = 0; i < cate.Count(); i++)
+                    {
+                        if (p.cate_id == cate[i].id)
+                        {
+                            <option value="@cate[i].id" selected>@cate[i].name</option>
+                        }
+                        else
+                        {
+                            <option value="@cate[i].id">@cate[i].name</option>
+                        }
+                    }
+                </select>
+            </td>
+        </tr>
+        <tr>
+            <td><label>Name:</label></td>
+            <td><input type="text" name="name" value="@p.name" required /></td>
+        </tr>
+        <tr>
+            <td><label>Metaname:</label></td>
+            <td><input type="text" name="meta_name" value="@p.meta_name" required /></td>
+        </tr>
+        <tr>
+            <td><label>Img:</label></td>
+            <td><img src="~/Content/dailyShop/img/product/@p.img" width="100px" height="100px" /><br /><input type="file" name="img_file" value="Choose file" /></td>
+        </tr>
+        <tr>
+            <td><label>Rate:</label></td>
+            <td><input type="number" name="rate" min="0" value="@p.rate" /></td>
+        </tr>
+        <tr>
+            <td><label>Amount:</label></td>
+            <td><input type="number" name="amount" min="0" value="@p.amount" /></td>
+        </tr>
+        <tr>
+            <td><label>Price:</label></td>
+            <td><input type="number" name="price" min="0" value="@p.price" /></td>
+        </tr>
+        <tr>
+            <td><label>Discount:</label></td>
+            <td><input type="number" name="discount" min="0" value="@p.discount" /></td>
+        </tr>
+        <tr>
+            <td><label>Get At:</label></td>
+            <td><input type="text" name="get_at" value="@p.get_at" required /></td>
+        </tr>
+        <tr><td colspan="2" style="text-align:center"><input type="submit" name="submit" value="OK" class="btn btn-default" /></td></tr>
+    </table>
+</form>
+
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/jqueryval")
+}

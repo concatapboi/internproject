@@ -1,0 +1,25 @@
+﻿@{
+    List<demo.Models.tbl_BillDetail> bD = (List<demo.Models.tbl_BillDetail>)ViewBag.billDetail;
+    List<demo.Models.tbl_Product> pL = (List<demo.Models.tbl_Product>)ViewBag.pList;
+}
+    <table class="table table-bordered">
+        <thead>
+            <tr><td><label>Product Name:</label></td>
+                <td><label>Amounts:</label></td>
+                <td><label>Total Price:</label></td></tr>
+        </thead>
+        <tbody>
+            @for (int i = 0; i < bD.Count; i++)
+            {
+                for (int j = 0; j < pL.Count; j++)
+                {
+                    if (pL[j].id == bD[i].pro_id)
+                    {
+                        <tr><td><label>@pL[j].name</label></td>
+                        <td><label>@bD[i].amount</label></td>
+                        <td><label>@String.Format("{0:0,0}", bD[i].price) đ</label></td></tr>
+                    }
+                }
+            }
+        </tbody>
+    </table>

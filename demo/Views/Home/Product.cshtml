@@ -1,0 +1,118 @@
+﻿
+@{
+    ViewBag.Title = "Product";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@section Title {
+<title> @ViewBag.Title</title>
+}
+<!-- catg header banner section -->
+<section id="aa-catg-head-banner">
+    <img src="~/Content/dailyShop/img/fashion/fashion-header-bg-8.jpg" alt="fashion img">
+    <div class="aa-catg-head-banner-area">
+        <div class="container">
+            <div class="aa-catg-head-banner-content">
+                <h2>@ViewBag.Title</h2>
+                <ol class="breadcrumb">
+                    <li>@Html.ActionLink("Home", "Index","Home")</li>
+                    <li class="active">Product</li>
+                </ol>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- / catg header banner section -->
+<!-- product category -->
+<section id="aa-product-category">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-9 col-md-9 col-sm-8 col-md-push-3">
+                <div class="aa-product-catg-content">
+                    <div class="aa-product-catg-head">
+                        <div class="aa-product-catg-head-right">
+                        </div>
+                    </div>
+                    <div class="aa-product-catg-body">
+                        <ul class="aa-product-catg">
+                            <!-- start single product item -->
+                            @foreach (var pro in ViewBag.product)
+                            {
+                            <li>
+                                <figure>
+                                    <a href="@Url.Action("ProductDetail","Home",new { id = pro.id})"><img src="~/Content/dailyShop/img/product/@pro.img" alt="@pro.meta_name" width="300px" height="300px"></a>
+                                    @if (pro.amount > 0)
+                                    {
+                                        <a class="aa-add-card-btn" href="@Url.Action("addCart","Home",new { id = pro.id})"><span class="fa fa-shopping-cart"></span>Add To Cart</a>
+                                    }
+                                    <figcaption>
+                                        <h4 class="aa-product-title"><a href="#">@pro.name</a></h4>
+                                        @if (pro.discount > 0)
+                                        {
+                                            <span class="aa-product-price"> @String.Format("{0:0,0}", pro.discount) đ</span><span class="aa-product-price"><del> @String.Format("{0:0,0}", pro.price) đ</del></span>
+                                        }
+                                        else
+                                        {
+                                            <span class="aa-product-price"> @String.Format("{0:0,0}", pro.price) đ</span>
+                                        }
+                                    </figcaption>
+                                </figure>
+                                <!-- product badge -->
+                                @if (pro.amount <= 0)
+                                {
+                                    <span class="aa-badge aa-sold-out" href="#">Sold Out!</span>
+                                }
+                                else if (pro.discount > 0)
+                                {
+                                    <span class="aa-badge aa-sale" href="#">SALE!</span>
+                                }
+                                else if (pro.rate > 0)
+                                {
+                                    <span class="aa-badge aa-hot" href="#">HOT!</span>
+                                }
+                            </li>
+                            }
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-3 col-sm-4 col-md-pull-9">
+                <aside class="aa-sidebar">
+                    <!-- single sidebar -->
+                    <div class="aa-sidebar-widget">
+                        <h3>Category</h3>
+                        <ul class="aa-catg-nav">
+                            @foreach (var cat in ViewBag.category)
+                            {
+                                <li><a href="@Url.Action("ProductByCate","Home",new { id = cat.id})">@cat.name</a> </li>
+                            }
+                        </ul>
+                    </div>
+                    <!-- single sidebar -->
+                    <div class="aa-sidebar-widget">
+                        <h3>Top Rated Products</h3>
+                        <div class="aa-recently-views">
+                            <ul>
+                                @foreach (var pro in ViewBag.Hotproduct)
+                                {
+                                    <li>
+                                        <a href="@Url.Action("ProductDetail","Home",new { id = pro.id})" class="aa-cartbox-img"><img alt="img" src="~/Content/dailyShop/img/product/@pro.img"></a>
+                                        <div class="aa-cartbox-info">
+                                            <h4><a href="#">@pro.name</a></h4>
+                                            @if (pro.discount == 0)
+                                            {<p>@String.Format("{0:0,0}", pro.price) đ</p>}
+                                        else
+                                        {<p><del>@String.Format("{0:0,0}", pro.price) đ</del>&nbsp;@String.Format("{0:0,0}", pro.discount) đ</p>}
+                                        </div>
+                                    </li>
+                                }
+                            </ul>
+                        </div>
+                    </div>
+                </aside>
+            </div>
+
+        </div>
+    </div>
+</section>
+<!-- / product category -->

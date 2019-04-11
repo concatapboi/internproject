@@ -1,0 +1,120 @@
+﻿@{
+    ViewBag.Title = "ProductDetail";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    demo.Models.tbl_Product proI = ViewBag.productItem;
+    demo.Models.tbl_Category cat = ViewBag.cat;
+    demo.Models.tbl_Publisher pub = ViewBag.pub;
+}
+@section Title {
+    <title> @ViewBag.Title</title>
+}
+<!-- catg header banner section -->
+<section id="aa-catg-head-banner">
+    <img src="~/Content/dailyShop/img/fashion/fashion-header-bg-8.jpg" alt="fashion img">
+    <div class="aa-catg-head-banner-area">
+        <div class="container">
+            <div class="aa-catg-head-banner-content">
+                <h2>@pub.name</h2>
+                <ol class="breadcrumb">
+                    <li>@Html.ActionLink("Home","Index","Home")</li>
+                    <li>@Html.ActionLink("Product", "Product", "Home")</li>
+                    <li class="active">@pub.name  - @cat.name</li>
+                </ol>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- / catg header banner section -->
+<!-- product category -->
+<section id="aa-product-details">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="aa-product-details-area">
+                    <div class="aa-product-details-content">
+                        <div class="row">
+                            <!-- Modal view slider -->
+                            <div class="col-md-5 col-sm-5 col-xs-12">
+                                <div class="aa-product-view-slider">
+                                    <div id="demo-1" class="simpleLens-gallery-container">
+                                        <div class="simpleLens-container">
+                                            <div class="simpleLens-big-image-container"><img src="~/Content/dailyShop/img/product/@proI.img" class="simpleLens-big-image"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- Modal view content -->
+                            <div class="col-md-7 col-sm-7 col-xs-12">
+                                <div class="aa-product-view-content">
+                                    <h3>@proI.name</h3>
+                                    <div class="aa-price-block">
+                                        @if (proI.discount > 0)
+                                        {<span class="aa-product-view-price">@String.Format("{0:0,0}", proI.discount) đ &nbsp;</span><span class="aa-product-view-price"><del>@String.Format("{0:0,0}", proI.price) đ</del></span> }
+                                    else
+                                    {<span class="aa-product-view-price">@String.Format("{0:0,0}", proI.price) đ</span>}
+                                        <p class="aa-product-avilability">Availability: @if (proI.amount > 0)
+                                        {<span>Available</span>}
+                                        else
+                                        {<span>Sold out</span>}</p>
+                                    </div>
+                                    <p>CF is always giving the best THINGS to you and your LOVELY PHONE.</p>
+                                    <div class="aa-prod-quantity">
+                                        <p class="aa-prod-category">Quantity: @proI.amount</p>
+                                        <p class="aa-prod-category">
+                                            From @pub.name || Category: <a href="#">@cat.name</a>
+                                        </p>
+                                    </div>
+                                    <div class="aa-prod-view-bottom">
+                                        @if (proI.amount>0) {<a class="aa-add-to-cart-btn" href="@Url.Action("addCart","Home",new { id = proI.id})">Add To Cart</a>}
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Related product -->
+                    <div class="aa-product-related-item">
+                        <h3>Related Products</h3>
+                        <ul class="aa-product-catg aa-related-item-slider">
+                            <!-- start single product item -->
+                            @foreach (var pro in ViewBag.product)
+                            {
+                            <li>
+                                <figure>
+                                    <a class="aa-product-img" href="@Url.Action("ProductDetail","Home",new { id = pro.id})"><img src="~/Content/dailyShop/img/product/@pro.img" alt="@pro.meta_name" width="300px" height="300px"></a>
+                                    @if (pro.amount > 0)
+                                    {<a class="aa-add-card-btn" href="@Url.Action("addCart", "Home", new { id = pro.id })"><span class="fa fa-shopping-cart"></span>Add To Cart</a>}
+                                    <figcaption>
+                                        <h4 class="aa-product-title"><a href="#">@pro.name</a></h4>
+                                        @if (pro.discount > 0)
+                                        {
+                                            <span class="aa-product-price">@String.Format("{0:0,0}", pro.discount) đ</span><span class="aa-product-price"><del>@String.Format("{0:0,0}", pro.price) đ</del></span>
+                                        }
+                                        else
+                                        {
+                                            <span class="aa-product-price">@String.Format("{0:0,0}", pro.price) đ</span>
+                                        }
+                                    </figcaption>
+                                </figure>
+                                @if (pro.amount <= 0)
+                                {
+                                    <span class="aa-badge aa-sold-out" href="#">Sold Out!</span>
+                                }
+                                else if (pro.discount > 0)
+                                {
+                                    <span class="aa-badge aa-sale" href="#">SALE!</span>
+                                }
+                                else if (pro.rate > 0)
+                                {
+                                    <span class="aa-badge aa-hot" href="#">HOT!</span>
+                                }
+
+                            </li>
+                            }
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- / product category -->

@@ -1,0 +1,20 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="demoModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="products">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="varchar" MaxLength="20" Nullable="false" />
+    <Property Name="name" Type="nvarchar" MaxLength="100" Nullable="false" />
+    <Property Name="meta_name" Type="nchar" MaxLength="100" />
+    <Property Name="price" Type="int" />
+    <Property Name="img_link" Type="nchar" MaxLength="100" />
+    <Property Name="des" Type="nvarchar" MaxLength="500" />
+    <Property Name="status" Type="tinyint" />
+    <Property Name="catalog_id" Type="varchar" MaxLength="20" />
+    <Property Name="count" Type="int" />
+  </EntityType>
+  <EntityContainer Name="demoModelStoreContainer">
+    <EntitySet Name="products" EntityType="Self.products" Schema="dbo" store:Type="Tables" />
+  </EntityContainer>
+</Schema>

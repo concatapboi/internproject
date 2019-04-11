@@ -1,0 +1,59 @@
+﻿@model demo.Models.tbl_Bill
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/Admin.cshtml";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>tbl_Bill</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.level_status)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.level_status)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.created_at)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.created_at)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.total_price)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.total_price)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.cus_name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.cus_name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.tbl_Customer.username)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.tbl_Customer.username)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.id }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

@@ -1,0 +1,221 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="demoModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="tbl_Admin">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="username" Type="varchar" MaxLength="20" Nullable="false" />
+    <Property Name="pass" Type="varchar" MaxLength="200" Nullable="false" />
+    <Property Name="name" Type="nvarchar" MaxLength="100" />
+  </EntityType>
+  <EntityType Name="tbl_Bill">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="level_status" Type="tinyint" Nullable="false" />
+    <Property Name="cus_id" Type="int" Nullable="false" />
+    <Property Name="created_at" Type="datetime" Nullable="false" />
+    <Property Name="total_price" Type="int" Nullable="false" />
+    <Property Name="cus_name" Type="nvarchar" MaxLength="100" />
+    <Property Name="cus_address" Type="nvarchar" MaxLength="500" />
+  </EntityType>
+  <EntityType Name="tbl_BillDetail">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="bill_id" Type="int" Nullable="false" />
+    <Property Name="pro_id" Type="int" Nullable="false" />
+    <Property Name="amount" Type="int" Nullable="false" />
+    <Property Name="price" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="tbl_Cart">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="cus_id" Type="int" Nullable="false" />
+    <Property Name="pro_id" Type="int" Nullable="false" />
+    <Property Name="amount" Type="int" Nullable="false" />
+    <Property Name="total_price" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="tbl_Category">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="pub_id" Type="int" Nullable="false" />
+    <Property Name="name" Type="nvarchar" MaxLength="100" Nullable="false" />
+    <Property Name="meta_name" Type="varchar" MaxLength="100" />
+    <Property Name="amount" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="tbl_Customer">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="username" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="pass" Type="varchar" MaxLength="200" Nullable="false" />
+    <Property Name="name" Type="nvarchar" MaxLength="100" />
+    <Property Name="email" Type="varchar" MaxLength="100" />
+    <Property Name="phone" Type="varchar" MaxLength="20" />
+    <Property Name="cus_address" Type="nvarchar" MaxLength="500" />
+  </EntityType>
+  <EntityType Name="tbl_Product">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="cate_id" Type="int" Nullable="false" />
+    <Property Name="name" Type="nvarchar" MaxLength="200" Nullable="false" />
+    <Property Name="meta_name" Type="varchar" MaxLength="100" />
+    <Property Name="img" Type="varchar" MaxLength="100" Nullable="false" />
+    <Property Name="rate" Type="tinyint" Nullable="false" />
+    <Property Name="amount" Type="int" Nullable="false" />
+    <Property Name="price" Type="int" Nullable="false" />
+    <Property Name="discount" Type="int" Nullable="false" />
+    <Property Name="get_at" Type="datetime" Nullable="false" />
+  </EntityType>
+  <EntityType Name="tbl_Publisher">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="name" Type="nvarchar" MaxLength="100" />
+    <Property Name="meta_name" Type="varchar" MaxLength="100" />
+    <Property Name="amount" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="tbl_Slider">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="name" Type="varchar" MaxLength="100" Nullable="false" />
+    <Property Name="meta_name" Type="varchar" MaxLength="100" />
+  </EntityType>
+  <Association Name="fk_bill_detail">
+    <End Role="tbl_Bill" Type="Self.tbl_Bill" Multiplicity="1" />
+    <End Role="tbl_BillDetail" Type="Self.tbl_BillDetail" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tbl_Bill">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="tbl_BillDetail">
+        <PropertyRef Name="bill_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_cate_pro">
+    <End Role="tbl_Category" Type="Self.tbl_Category" Multiplicity="1" />
+    <End Role="tbl_Product" Type="Self.tbl_Product" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tbl_Category">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="tbl_Product">
+        <PropertyRef Name="cate_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_customer_bill">
+    <End Role="tbl_Customer" Type="Self.tbl_Customer" Multiplicity="1" />
+    <End Role="tbl_Bill" Type="Self.tbl_Bill" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tbl_Customer">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="tbl_Bill">
+        <PropertyRef Name="cus_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_customer_cart">
+    <End Role="tbl_Customer" Type="Self.tbl_Customer" Multiplicity="1" />
+    <End Role="tbl_Cart" Type="Self.tbl_Cart" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tbl_Customer">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="tbl_Cart">
+        <PropertyRef Name="cus_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_product_cart">
+    <End Role="tbl_Product" Type="Self.tbl_Product" Multiplicity="1" />
+    <End Role="tbl_Cart" Type="Self.tbl_Cart" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tbl_Product">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="tbl_Cart">
+        <PropertyRef Name="pro_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_product_detail">
+    <End Role="tbl_Product" Type="Self.tbl_Product" Multiplicity="1" />
+    <End Role="tbl_BillDetail" Type="Self.tbl_BillDetail" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tbl_Product">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="tbl_BillDetail">
+        <PropertyRef Name="pro_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_pub_cate">
+    <End Role="tbl_Publisher" Type="Self.tbl_Publisher" Multiplicity="1" />
+    <End Role="tbl_Category" Type="Self.tbl_Category" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tbl_Publisher">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="tbl_Category">
+        <PropertyRef Name="pub_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="demoModelStoreContainer">
+    <EntitySet Name="tbl_Admin" EntityType="Self.tbl_Admin" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tbl_Bill" EntityType="Self.tbl_Bill" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tbl_BillDetail" EntityType="Self.tbl_BillDetail" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tbl_Cart" EntityType="Self.tbl_Cart" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tbl_Category" EntityType="Self.tbl_Category" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tbl_Customer" EntityType="Self.tbl_Customer" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tbl_Product" EntityType="Self.tbl_Product" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tbl_Publisher" EntityType="Self.tbl_Publisher" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tbl_Slider" EntityType="Self.tbl_Slider" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="fk_bill_detail" Association="Self.fk_bill_detail">
+      <End Role="tbl_Bill" EntitySet="tbl_Bill" />
+      <End Role="tbl_BillDetail" EntitySet="tbl_BillDetail" />
+    </AssociationSet>
+    <AssociationSet Name="fk_cate_pro" Association="Self.fk_cate_pro">
+      <End Role="tbl_Category" EntitySet="tbl_Category" />
+      <End Role="tbl_Product" EntitySet="tbl_Product" />
+    </AssociationSet>
+    <AssociationSet Name="fk_customer_bill" Association="Self.fk_customer_bill">
+      <End Role="tbl_Customer" EntitySet="tbl_Customer" />
+      <End Role="tbl_Bill" EntitySet="tbl_Bill" />
+    </AssociationSet>
+    <AssociationSet Name="fk_customer_cart" Association="Self.fk_customer_cart">
+      <End Role="tbl_Customer" EntitySet="tbl_Customer" />
+      <End Role="tbl_Cart" EntitySet="tbl_Cart" />
+    </AssociationSet>
+    <AssociationSet Name="fk_product_cart" Association="Self.fk_product_cart">
+      <End Role="tbl_Product" EntitySet="tbl_Product" />
+      <End Role="tbl_Cart" EntitySet="tbl_Cart" />
+    </AssociationSet>
+    <AssociationSet Name="fk_product_detail" Association="Self.fk_product_detail">
+      <End Role="tbl_Product" EntitySet="tbl_Product" />
+      <End Role="tbl_BillDetail" EntitySet="tbl_BillDetail" />
+    </AssociationSet>
+    <AssociationSet Name="fk_pub_cate" Association="Self.fk_pub_cate">
+      <End Role="tbl_Publisher" EntitySet="tbl_Publisher" />
+      <End Role="tbl_Category" EntitySet="tbl_Category" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

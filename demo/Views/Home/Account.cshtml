@@ -1,0 +1,231 @@
+﻿@model demo.Models.tbl_Customer
+@{
+    ViewBag.Title = "Account";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    String errLogin = (String)Session["errLogin"];
+    demo.Models.tbl_Customer errValue = (demo.Models.tbl_Customer)Session["errValue"];
+    demo.Models.tbl_Customer cus = (demo.Models.tbl_Customer)Session["user"];
+}
+
+@section Title {
+    <title>@ViewBag.Title</title>
+}
+
+<!-- catg header banner section -->
+<section id="aa-catg-head-banner">
+    <img src="~/Content/dailyShop/img/fashion/fashion-header-bg-8.jpg" alt="fashion img">
+    <div class="aa-catg-head-banner-area">
+        <div class="container">
+            <div class="aa-catg-head-banner-content">
+                <h2>Account Page</h2>
+                <ol class="breadcrumb">
+                    <li>@Html.ActionLink("Home", "Index","Home")</li>
+                    <li class="active">Account</li>
+                </ol>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- / catg header banner section -->
+<!-- Cart view section -->
+<section id="aa-myaccount">
+    <div class="container">
+        @if (cus == null)
+        {
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="aa-myaccount-area">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="aa-myaccount-login">
+                                    <h4>Login</h4>
+                                    @if (errLogin != null)
+                                    {
+                                        <span style="color: red">@errLogin</span>
+                                    }
+                                    <form action="@Url.Action("Login","Home")" class="aa-login-form" method="post" enctype="multipart/form-data">
+                                        <label for="">Username<span>*</span></label>
+                                        @if (errLogin != null)
+                                        {<input type="text" placeholder="Username" name="username" required value="@Session["usernameLogin"]"> }
+                                        else
+                                        { <input type="text" placeholder="Username" name="username" required>}
+                                        <label for="">Password<span>*</span></label>
+                                        <input type="password" placeholder="Password" name="password" required>
+                                        <button type="submit" class="aa-browse-btn" name="submit">Login</button>
+                                    </form>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="aa-myaccount-register">
+                                    <h4>Register</h4>
+                                    @if (Session["errMess"] != null)
+                                    {
+                                        using (Html.BeginForm("Register", "Home", FormMethod.Post, htmlAttributes: new { @class = "aa-login-form" }))
+                                        {
+                                            @Html.AntiForgeryToken()
+                                            <div>
+                                                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                                                <div class="form-group">
+                                                    <label for="">Username<span>*</span></label><br />
+                                                    @Html.EditorFor(model => model.username, new { htmlAttributes = new { @Value = errValue.username } })
+                                                    @Html.ValidationMessageFor(model => model.username, "", new { @class = "text-danger" })
+                                                </div>
+                                                <div class="form-group">
+                                                    <label for="">Password<span>*</span></label><br />
+                                                    @Html.PasswordFor(model => model.pass, new { htmlAttributes = new { placeholder = "Name", min = "3" } })
+                                                    @Html.ValidationMessageFor(model => model.pass, "", new { @class = "text-danger" })
+                                                </div>
+                                                <div class="form-group">
+                                                    <label for="">Name</label><br />
+                                                    @Html.EditorFor(model => model.name, new { htmlAttributes = new { @Value = errValue.name } })
+                                                    @Html.ValidationMessageFor(model => model.name, "", new { @class = "text-danger" })
+                                                </div>
+                                                <div class="form-group">
+                                                    <label for="">Email</label><br />
+                                                    @Html.EditorFor(model => model.email, new { htmlAttributes = new { @Value = errValue.email } })
+                                                    @Html.ValidationMessageFor(model => model.email, "", new { @class = "text-danger" })
+                                                </div>
+                                                <div class="form-group">
+                                                    <label for="">Phone number</label><br />
+                                                    @Html.EditorFor(model => model.phone, new { htmlAttributes = new { @Value = errValue.phone } })
+                                                    @Html.ValidationMessageFor(model => model.phone, "", new { @class = "text-danger" })
+                                                </div>
+                                                <div class="form-group">
+                                                    <label for="">Address</label><br />
+                                                    @Html.EditorFor(model => model.cus_address, new { htmlAttributes = new { @Value = errValue.cus_address } })
+                                                    @Html.ValidationMessageFor(model => model.cus_address, "", new { @class = "text-danger" })
+                                                </div>
+                                                <div class="form-group">
+                                                    <button type="submit" class="aa-browse-btn" name="submit">Login</button>
+                                                </div>
+                                            </div>
+                                        }
+                                    }
+                                    else
+                                    {
+                                        using (Html.BeginForm("Register", "Home", FormMethod.Post, htmlAttributes: new { @class = "aa-login-form" }))
+                                        {
+                                            @Html.AntiForgeryToken()
+                                            <div>
+                                                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                                                <div class="form-group">
+                                                    <label for="">Username<span>*</span></label><br />
+                                                    @Html.EditorFor(model => model.username, new { htmlAttributes = new { placeholder = "Username" } })
+                                                    @Html.ValidationMessageFor(model => model.username, "", new { @class = "text-danger" })
+                                                </div>
+                                                <div class="form-group">
+                                                    <label for="">Password<span>*</span></label><br />
+                                                    @Html.PasswordFor(model => model.pass)
+                                                    @Html.ValidationMessageFor(model => model.pass, "", new { @class = "text-danger" })
+                                                </div>
+                                                <div class="form-group">
+                                                    <label for="">Name</label><br />
+                                                    @Html.EditorFor(model => model.name, new { htmlAttributes = new { placeholder = "Name", min = "3" } })
+                                                    @Html.ValidationMessageFor(model => model.name, "", new { @class = "text-danger" })
+                                                </div>
+                                                <div class="form-group">
+                                                    <label for="">Email</label><br />
+                                                    @Html.EditorFor(model => model.email, new { htmlAttributes = new { placeholder = "Email" } })
+                                                    @Html.ValidationMessageFor(model => model.email, "", new { @class = "text-danger" })
+                                                </div>
+                                                <div class="form-group">
+                                                    <label for="">Phone number</label><br />
+                                                    @Html.EditorFor(model => model.phone, new { htmlAttributes = new { placeholder = "Phone number" } })
+                                                    @Html.ValidationMessageFor(model => model.phone, "", new { @class = "text-danger" })
+                                                </div>
+                                                <div class="form-group">
+                                                    <label for="">Address</label><br />
+                                                    @Html.EditorFor(model => model.cus_address, new { htmlAttributes = new { placeholder = "Address" } })
+                                                    @Html.ValidationMessageFor(model => model.cus_address, "", new { @class = "text-danger" })
+                                                </div>
+                                                <div class="form-group">
+                                                    <button type="submit" class="aa-browse-btn" name="submit">Register</button>
+                                                </div>
+                                            </div>
+                                        }
+                                    }
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        }
+        else
+        {
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="aa-myaccount-area">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="aa-myaccount-login">
+                                    <h4>Bill Detail</h4>
+                                    @if (ViewBag.bill != null)
+                                    {
+                                        foreach (var b in ViewBag.bill)
+                                        {
+                                            <div class="form-group"><label>ID: @b.id</label></div>
+                                            <div class="form-group">
+                                                <label>
+                                                    Status:
+                                                    @if (b.level_status == 0)
+                                                    {
+                                                        <span style="color: red">Wait For Checking &nbsp;</span><span>|| <a href="@Url.Action("CancelOrdering","Home",new { id = b.id })"><button class="aa-browse-btn" type="button" style="cursor: pointer">Cancel</button></a></span>
+                                                    }
+                                                    else if (b.level_status == 1)
+                                                    {
+                                                        <span style="color:darkblue">Delevering</span>
+                                                    }
+                                                    else if (b.level_status == 2)
+                                                    {
+                                                        <span style="color: deeppink">Delevered</span>
+                                                    }
+                                                    else if (b.level_status == 3)
+                                                    {
+                                                        <span style="color:green">Succeed</span>
+                                                    }
+                                                    else if (b.level_status == 4)
+                                                    {
+                                                        <span style="color:purple">Cancel</span>
+                                                    }
+                                                </label>
+                                            </div>
+                                            <div class="form-group"><label>Customer Name: @b.cus_name</label></div>
+                                            <div class="form-group"><label>Shipping Address: @b.cus_address</label></div>
+                                            <div class="form-group"><label>Created At: @String.Format("{0:dd-mm-yyyy}", b.created_at)</label></div>
+                                            <div class="form-group"><label>Total Price: @String.Format("{0:0,0}", b.total_price) đ</label></div>
+                                            <div class="aa-payment-method">
+                                                @{Html.RenderAction("_BillDetail", "Home", new { id = b.id });}
+                                            </div>
+                                        }
+                                    }
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="aa-myaccount-register">
+                                    <h4>Customer Information</h4>
+                                    @if (ViewBag.errUpdate != null)
+                                    {
+                                        <div class="form-group text-danger"><label>@ViewBag.errUpdate </label></div>
+                                    }
+                                    else if (ViewBag.successUpdate!=null)
+                                    {
+                                        <div class="form-group text-success"><label>@ViewBag.successUpdate </label></div>
+                                    }
+                                    <div class="form-group"><label>Username: @cus.username</label></div>
+                                    <div class="form-group"><label>Name: @cus.name</label></div>
+                                    <div class="form-group"><label>Email: @cus.email</label></div>
+                                    <div class="form-group"><label>Phone Number: @cus.phone</label></div>
+                                    <div class="form-group"><label>Address: @cus.cus_address</label></div>
+                                    <div class="form-group"><a href="#" data-toggle="modal" data-target="#acc-modal"><button class="aa-browse-btn" type="button" style="cursor: pointer">Update Information</button></a></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        }
+
+    </div>
+</section>
+<!-- / Cart view section -->
